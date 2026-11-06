@@ -64,5 +64,4 @@ public class SearchVisitor implements Visitor {
         matches.clear();
         currentPath = "";
     }
-
 }

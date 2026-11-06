@@ -19,4 +19,9 @@ public class TotalSizeVisitor implements Visitor {
     public long getTotalSize() {
         return totalSize;
     }
+
+    @Override
+    public void reset() {
+        totalSize = 0;
+    }
 }
