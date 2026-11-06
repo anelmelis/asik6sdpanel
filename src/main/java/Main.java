@@ -2,6 +2,7 @@ import model.DirectoryNode;
 import model.FileNode;
 import model.FileSystemWalker;
 import visitor.TotalSizeVisitor;
+import visitor.SearchVisitor;
 
 public class Main {
 
@@ -27,5 +28,17 @@ public class Main {
 
         System.out.println("Total size: "
                 + sizeVisitor.getTotalSize() + " bytes");
+
+
+        SearchVisitor searchVisitor = new SearchVisitor(".txt", 100);
+
+        walker.walk(root, searchVisitor);
+
+        System.out.println("Search results:");
+
+        for (String path : searchVisitor.getMatches()) {
+            System.out.println(path);
+        }
+
     }
 }
