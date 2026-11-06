@@ -3,6 +3,7 @@ import model.FileNode;
 import model.FileSystemWalker;
 import visitor.TotalSizeVisitor;
 import visitor.SearchVisitor;
+import visitor.StatisticsVisitor;
 
 public class Main {
 
@@ -39,6 +40,17 @@ public class Main {
         for (String path : searchVisitor.getMatches()) {
             System.out.println(path);
         }
+
+
+        StatisticsVisitor statisticsVisitor = new StatisticsVisitor();
+
+        walker.walk(root, statisticsVisitor);
+
+        System.out.println("Statistics:");
+        System.out.println("Files: " + statisticsVisitor.getFileCount());
+        System.out.println("Directories: " + statisticsVisitor.getDirectoryCount());
+        System.out.println("Maximum depth: " + statisticsVisitor.getMaxDepth());
+
 
     }
 }
